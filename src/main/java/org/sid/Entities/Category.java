@@ -12,11 +12,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Document
-@Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Category {
     @Id
     private String id;
     private String name;
     @DBRef
     private Collection<Product> products = new ArrayList<>();
+
+    //on a un souci d'étre tomber dans un boucle infini c'est pour ca on a implementé cette méthode et pas la générer directement
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
